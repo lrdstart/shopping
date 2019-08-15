@@ -1,0 +1,30 @@
+server:
+  port: 8888
+spring:
+  freemarker:
+    request-context-attribute: request
+    cache: false
+  #数据源配置 这里是druid数据源配置 注意冒号后面要有空格
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mall?characterEncoding=utf-8&userSSL=false
+    username: root
+    password: 1234
+    type: com.alibaba.druid.pool.DruidDataSource
+  mvc:
+    static-path-pattern: /static/**
+# MyBatis
+mybatis:
+  # 配置类型别名
+  typeAliasesPackage: com.shopping.model
+  mapper-locations: classpath:mapper/*.xml
+  # 控制台显示SQL语句
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# 配置分页参数
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
